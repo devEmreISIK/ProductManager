@@ -33,7 +33,7 @@ public sealed class ProductRepository(BaseDbContext context) : IProductRepositor
         return context.Products.ToList();
     }
 
-    public List<Product> GetByCategory(int categoryId)
+    public List<Product> GetAllByCategory(int categoryId)
     {
         return context.Products.Where(p => p.CategoryId == categoryId).Include(p => p.Category).ToList();
     }
@@ -43,12 +43,12 @@ public sealed class ProductRepository(BaseDbContext context) : IProductRepositor
         return context.Products.Find(id);
     }
 
-    public List<Product> GetByPriceRange(int min, int max)
+    public List<Product> GetAllByPriceRange(int min, int max)
     {
         return context.Products.Where(p => p.Price < max && p.Price > min).Include(p => p.Category).ToList();
     }
 
-    public List<Product> GetByStockRange(int min, int max)
+    public List<Product> GetAllByStockRange(int min, int max)
     {
         return context.Products.Where(p => p.Stock < max && p.Stock > min).Include(p => p.Category).ToList();
     }

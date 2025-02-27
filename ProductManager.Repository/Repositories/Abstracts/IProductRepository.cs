@@ -9,7 +9,7 @@ namespace ProductManager.Repository.Repositories.Abstracts;
 
 public interface IProductRepository : IRepository<Product, int>
 {
-    List<Product> GetByCategory(int categoryId);
-    List<Product> GetByPriceRange(int min, int max);
-    List<Product> GetByStockRange(int min, int max);
+    List<Product> GetAllByCategory(int categoryId);
+    List<Product> GetAllByPriceRange(int min, int max);
+    List<Product> GetAllByStockRange(int min, int max);
 }
