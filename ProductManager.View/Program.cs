@@ -1,7 +1,21 @@
+using ProductManager.Repository.Contexts;
+using ProductManager.Repository.Repositories.Abstracts;
+using ProductManager.Repository.Repositories.Concretes;
+using ProductManager.Service.Abstracts;
+using ProductManager.Service.Concretes;
+using ProductManager.Service.Mappers.Profiles;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<BaseDbContext>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
+
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 
