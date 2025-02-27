@@ -30,7 +30,7 @@ public sealed class ProductRepository(BaseDbContext context) : IProductRepositor
 
     public List<Product> GetAll()
     {
-        return context.Products.ToList();
+        return context.Products.Include(p => p.Category).ToList();
     }
 
     public List<Product> GetAllByCategory(int categoryId)
@@ -40,7 +40,7 @@ public sealed class ProductRepository(BaseDbContext context) : IProductRepositor
 
     public Product? GetById(int id)
     {
-        return context.Products.Find(id);
+        return context.Products.Include(p => p.Category).FirstOrDefault(p => p.Id == id);
     }
 
     public List<Product> GetAllByPriceRange(int min, int max)

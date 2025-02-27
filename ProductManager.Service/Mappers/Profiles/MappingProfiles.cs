@@ -21,5 +21,7 @@ public class MappingProfiles : Profile
         CreateMap<Product, ProductResponseDto>();
         CreateMap<ProductAddRequestDto, Product>();
         CreateMap<ProductUpdateRequestDto, Product>();
+
+       
     }
 }
